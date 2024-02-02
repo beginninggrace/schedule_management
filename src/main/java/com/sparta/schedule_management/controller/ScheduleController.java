@@ -1,5 +1,6 @@
 package com.sparta.schedule_management.controller;
 
+import com.sparta.schedule_management.dto.request.DeleteScheduleRequest;
 import com.sparta.schedule_management.dto.request.SaveScheduleRequest;
 import com.sparta.schedule_management.dto.request.UpdateScheduleRequest;
 import com.sparta.schedule_management.dto.response.ScheduleResponse;
@@ -42,9 +43,9 @@ public class ScheduleController {
     }
 
     @DeleteMapping("/schedule/{scheduleId}") // 삭제
-    public void deleteSchedule(@PathVariable Long scheduleId) {
+    public void deleteSchedule(@PathVariable Long scheduleId, @RequestBody DeleteScheduleRequest request) {
 
-        scheduleService.deleteSchedule(scheduleId);
+        scheduleService.deleteSchedule(scheduleId, request);
     }
 
 }
