@@ -1,20 +1,18 @@
-package com.sparta.schedule_management.config;
+package com.sparta.schedule_management.user.config;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.sparta.schedule_management.jwt.JwtAuthorizationFilter;
-import com.sparta.schedule_management.jwt.JwtUtil;
-import com.sparta.schedule_management.security.UserDetailsServiceImpl;
+import com.sparta.schedule_management.user.jwt.JwtAuthorizationFilter;
+import com.sparta.schedule_management.user.jwt.JwtUtil;
+import com.sparta.schedule_management.user.security.UserDetailsServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;

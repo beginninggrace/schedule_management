@@ -1,8 +1,8 @@
-package com.sparta.schedule_management.controller;
+package com.sparta.schedule_management.user.controller;
 
-import com.sparta.schedule_management.dto.request.UserRequest;
-import com.sparta.schedule_management.dto.response.UserResponse;
-import com.sparta.schedule_management.jwt.JwtUtil;
+import com.sparta.schedule_management.user.dto.request.UserRequest;
+import com.sparta.schedule_management.user.dto.response.UserResponse;
+import com.sparta.schedule_management.user.jwt.JwtUtil;
 import com.sparta.schedule_management.service.UserService;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;

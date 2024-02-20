@@ -1,8 +1,8 @@
 package com.sparta.schedule_management.service;
 
-import com.sparta.schedule_management.dto.request.UserRequest;
-import com.sparta.schedule_management.entity.User;
-import com.sparta.schedule_management.repository.UserRepository;
+import com.sparta.schedule_management.user.dto.request.UserRequest;
+import com.sparta.schedule_management.user.entity.User;
+import com.sparta.schedule_management.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;

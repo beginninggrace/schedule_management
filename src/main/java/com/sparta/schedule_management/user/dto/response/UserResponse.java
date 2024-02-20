@@ -1,4 +1,4 @@
-package com.sparta.schedule_management.dto.response;
+package com.sparta.schedule_management.user.dto.response;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.AllArgsConstructor;

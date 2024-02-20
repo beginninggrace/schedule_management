@@ -1,11 +1,11 @@
-package com.sparta.schedule_management.service;
+package com.sparta.schedule_management.schedule.service;
 
-import com.sparta.schedule_management.dto.request.DeleteScheduleRequest;
-import com.sparta.schedule_management.dto.request.SaveScheduleRequest;
-import com.sparta.schedule_management.dto.request.UpdateScheduleRequest;
-import com.sparta.schedule_management.dto.response.ScheduleResponse;
-import com.sparta.schedule_management.entity.Schedule;
-import com.sparta.schedule_management.repository.ScheduleRepository;
+import com.sparta.schedule_management.schedule.dto.request.DeleteScheduleRequest;
+import com.sparta.schedule_management.schedule.dto.request.SaveScheduleRequest;
+import com.sparta.schedule_management.schedule.dto.request.UpdateScheduleRequest;
+import com.sparta.schedule_management.schedule.dto.response.ScheduleResponse;
+import com.sparta.schedule_management.schedule.entity.Schedule;
+import com.sparta.schedule_management.schedule.repository.ScheduleRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;

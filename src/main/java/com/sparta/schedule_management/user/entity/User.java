@@ -1,4 +1,4 @@
-package com.sparta.schedule_management.entity;
+package com.sparta.schedule_management.user.entity;
 
 import jakarta.persistence.*;
 import lombok.Builder;

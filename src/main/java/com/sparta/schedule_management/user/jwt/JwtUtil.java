@@ -1,4 +1,4 @@
-package com.sparta.schedule_management.jwt;
+package com.sparta.schedule_management.user.jwt;
 
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.security.Keys;

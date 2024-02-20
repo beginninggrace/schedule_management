@@ -1,12 +1,10 @@
-package com.sparta.schedule_management.security;
+package com.sparta.schedule_management.user.security;
 
-import com.sparta.schedule_management.entity.User;
+import com.sparta.schedule_management.user.entity.User;
 import lombok.Getter;
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import java.util.ArrayList;
 import java.util.Collection;
 
 // UserDetails를 상속받는 UserDetailsImpl 만들기

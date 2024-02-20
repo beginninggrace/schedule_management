@@ -1,7 +1,7 @@
-package com.sparta.schedule_management.security;
+package com.sparta.schedule_management.user.security;
 
-import com.sparta.schedule_management.entity.User;
-import com.sparta.schedule_management.repository.UserRepository;
+import com.sparta.schedule_management.user.entity.User;
+import com.sparta.schedule_management.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;

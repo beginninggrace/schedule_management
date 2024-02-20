@@ -1,9 +1,9 @@
-package com.sparta.schedule_management.jwt;
+package com.sparta.schedule_management.user.jwt;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.sparta.schedule_management.dto.response.UserResponse;
-import com.sparta.schedule_management.security.UserDetailsImpl;
-import com.sparta.schedule_management.security.UserDetailsServiceImpl;
+import com.sparta.schedule_management.user.dto.response.UserResponse;
+import com.sparta.schedule_management.user.security.UserDetailsImpl;
+import com.sparta.schedule_management.user.security.UserDetailsServiceImpl;
 import io.jsonwebtoken.Claims;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
@@ -16,7 +16,6 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import java.io.IOException;
