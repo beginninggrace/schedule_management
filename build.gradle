@@ -22,13 +22,37 @@ repositories {
 }
 
 dependencies {
+	// Security
+	// default로 기본동작이 회원가입과 로그인이 추가됨 - 기본적으로 모든 api가 회원가입/로그인해서 토큰값을 받아 처리되도록 기본적으로 세팅되어있어서 사용 안하려면 주석처리 해야 한다.
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+
+	// JWT
+	compileOnly group: 'io.jsonwebtoken', name: 'jjwt-api', version: '0.11.5'
+	runtimeOnly group: 'io.jsonwebtoken', name: 'jjwt-impl', version: '0.11.5'
+	runtimeOnly group: 'io.jsonwebtoken', name: 'jjwt-jackson', version: '0.11.5'
+
+	// Validation -@Pattern 쓰려면
+	implementation 'org.springframework.boot:spring-boot-starter-validation'
+
+	//jpa
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+
+	//thymeleaf
 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+
+	//web
 	implementation 'org.springframework.boot:spring-boot-starter-web'
-	compileOnly 'org.projectlombok:lombok'
+
+    //mysql
 	runtimeOnly 'com.mysql:mysql-connector-j'
+
+	//lombok
+	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
+
+	//test
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation 'org.springframework.security:spring-security-test'
 }
 
 tasks.named('test') {
