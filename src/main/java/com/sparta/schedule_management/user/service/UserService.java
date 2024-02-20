@@ -1,4 +1,4 @@
-package com.sparta.schedule_management.service;
+package com.sparta.schedule_management.user.service;
 
 import com.sparta.schedule_management.user.dto.request.UserRequest;
 import com.sparta.schedule_management.user.entity.User;
