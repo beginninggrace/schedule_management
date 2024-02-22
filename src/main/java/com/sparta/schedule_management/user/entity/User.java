@@ -2,7 +2,6 @@ package com.sparta.schedule_management.user.entity;
 
 import com.sparta.schedule_management.todo.entity.Todo;
 import jakarta.persistence.*;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 

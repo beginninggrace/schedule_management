@@ -34,8 +34,8 @@ public class JwtAuthorizationFilter extends OncePerRequestFilter { // OncePerReq
             throws ServletException, IOException {
         String token = jwtUtil.resolveToken(request); // bearer 글자가 짤린 순수 token 가져오기
 
-        if(Objects.nonNull(token)) { // token이 null이 아니면 수행 - (token != null)도 가능
-            if(jwtUtil.validateToken(token)) { // validateToken에 exception이 터지지 않았다면 정상적인 토큰이 여기로 들어옴
+        if (Objects.nonNull(token)) { // token이 null이 아니면 수행 - (token != null)도 가능
+            if (jwtUtil.validateToken(token)) { // validateToken에 exception이 터지지 않았다면 정상적인 토큰이 여기로 들어옴
                 Claims info = jwtUtil.getUserInfoFromToken(token); // 유저정보 뽑아오기 - Claims이라는게 유저정보를 담고있다고 보면 됨(토큰에 뭘 넣느냐에 따라 Claim에 뭐가 나올지 결정된다)
 
                 // 인증정보에 유저정보(username) 넣기

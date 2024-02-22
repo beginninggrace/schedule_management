@@ -19,13 +19,13 @@ public class Schedule {
     private Long id;
     @Column(nullable = false)
     private String user; // 담당자
-    @Column (nullable = false)
+    @Column(nullable = false)
     private String title; // 할일 제목
-    @Column (nullable = false)
+    @Column(nullable = false)
     private String contents; // 할일 내용
-    @Column (nullable = false)
+    @Column(nullable = false)
     private String password; // 비밀번호
-    @Column (nullable = false)
+    @Column(nullable = false)
     private LocalDateTime createdWhen; // 작성일
 
 

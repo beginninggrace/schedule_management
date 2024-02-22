@@ -14,7 +14,6 @@ public class ScheduleResponse { // 비밀번호같은 민감사항 노출하지 
     private LocalDateTime createdWhen;
 
 
-
     public ScheduleResponse(Long id, String title, String contents, String user, LocalDateTime createdWhen) {
         this.id = id;
         this.title = title;
