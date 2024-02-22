@@ -1,10 +1,8 @@
 package com.sparta.schedule_management.todo.dto.response;
 
-import com.sparta.schedule_management.todo.entity.Todo;
 import lombok.Getter;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 @Getter
 public class TodoInfoResponse {
@@ -13,7 +11,7 @@ public class TodoInfoResponse {
     private String content;
     private LocalDateTime createAt;
 
-    public TodoInfoResponse(String title, String content, LocalDateTime createAt, String username) {
+    public TodoInfoResponse(String username, String title, String content, LocalDateTime createAt) {
         this.username = username;
         this.title = title;
         this.content = content;

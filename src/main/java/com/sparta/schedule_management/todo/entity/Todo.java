@@ -1,14 +1,10 @@
 package com.sparta.schedule_management.todo.entity;
 
-import com.sparta.schedule_management.todo.dto.request.TodoRequest;
 import com.sparta.schedule_management.user.entity.User;
 import jakarta.persistence.*;
-import lombok.Builder;
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import java.io.Serializable;
 import java.time.LocalDateTime;
 
 @Getter
@@ -45,20 +41,12 @@ public class Todo {
         this.createAt = LocalDateTime.now();
     }
 
-    public Todo(TodoRequest dto) {
-        this.title = dto.getTitle();
-        this.content = dto.getContent();
-        this.createAt = LocalDateTime.now();
-    }
-
-    // 연관관계 mapping 메소드
-//    public void setUser(User user) {
-//        this.user = user;
-//        user.getTodoList().add(this);
-//    }
-
     public void updateTodo(String title, String content) {
         this.title = title;
-        this.content =content;
+        this.content = content;
+    }
+
+    public void completeTodo() {
+        this.completed = true;
     }
 }

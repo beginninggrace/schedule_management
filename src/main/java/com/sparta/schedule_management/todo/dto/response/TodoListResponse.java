@@ -1,10 +1,8 @@
 package com.sparta.schedule_management.todo.dto.response;
 
-import com.sparta.schedule_management.todo.entity.Todo;
 import lombok.Getter;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 @Getter
 public class TodoListResponse {
@@ -20,17 +18,4 @@ public class TodoListResponse {
         this.completed = completed;
     }
 
-    public TodoListResponse(Todo todo) { //
-        this.title = todo.getTitle();
-        this.createAt = todo.getCreateAt();
-        this.completed = todo.getCompleted();
-    }
-
-
-//    public TodoListResponse(List<Todo> todoList) {
-//        for (int i = 0; i < todoList.size(); i++) {
-//            this.username = todoList.get(i).getUser().getUsername();
-//
-//        }
-//    }
 }
