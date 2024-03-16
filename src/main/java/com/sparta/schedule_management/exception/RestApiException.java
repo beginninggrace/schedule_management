@@ -1,10 +1,20 @@
 package com.sparta.schedule_management.exception;
 
+import lombok.Getter;
+import org.springframework.http.ResponseEntity;
+
+@Getter
 public class RestApiException {
+
     private String errorMessage;
     private int statusCode;
 
-    public RestApiException(String message, int value) {
+    public static ResponseEntity<RestApiException> of(String errorMessage, int statusCode) {
+        return ResponseEntity.status(statusCode).body(new RestApiException(errorMessage, statusCode));
+    }
 
+    public RestApiException(String message, int value) {
+        this.errorMessage = message;
+        this.statusCode = value;
     }
 }
