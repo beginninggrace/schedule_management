@@ -9,13 +9,13 @@ public class TodoInfoResponse {
     private String username;
     private String title;
     private String content;
-    private LocalDateTime createAt;
+    private LocalDateTime createdAt;
 
-    public TodoInfoResponse(String username, String title, String content, LocalDateTime createAt) {
+    public TodoInfoResponse(String username, String title, String content, LocalDateTime createdAt) {
         this.username = username;
         this.title = title;
         this.content = content;
-        this.createAt = createAt;
+        this.createdAt = createdAt;
     }
 
 }

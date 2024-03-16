@@ -1,6 +1,5 @@
 package com.sparta.schedule_management.todo.entity;
 
-import com.sparta.schedule_management.user.entity.User;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -23,22 +22,19 @@ public class Todo {
     private String content;
 
     @Column
-    private LocalDateTime createAt;
+    private LocalDateTime createdAt;
 
     @Column
     private Boolean completed = false;
 
-
-    @ManyToOne() // 유저는 여러개의 게시글을 작성할 수 있기 때문에
-    @JoinColumn(name = "user_id") // todo가 many쪽이니 joincolumn 넣어주기
-    private User user; // 연관관계 표시
+    @Column
+    private Long userId;
 
 
-    public Todo(String title, String content, User findUser) {
+    public Todo(String title, String content, Long userId) {
         this.title = title;
         this.content = content;
-        this.user = findUser;
-        this.createAt = LocalDateTime.now();
+        this.userId = userId;
     }
 
     public void updateTodo(String title, String content) {

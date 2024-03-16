@@ -8,14 +8,15 @@ import java.time.LocalDateTime;
 public class TodoListResponse {
     private String username;
     private String title;
-    private LocalDateTime createAt;
+    private LocalDateTime createdAt;
     private Boolean completed;
 
-    public TodoListResponse(String username, String title, LocalDateTime createAt, Boolean completed) {
+    public TodoListResponse(String username, String title, LocalDateTime createdAt, Boolean completed) {
         this.username = username;
         this.title = title;
-        this.createAt = createAt;
+        this.createdAt = createdAt;
         this.completed = completed;
+
     }
 
 }
