@@ -24,14 +24,6 @@ public class User {
     @Column(nullable = false)
     private String password;
 
-    @OneToMany(mappedBy = "user")
-    private List<Todo> todoList = new ArrayList<>();
-
-
-    //user가 todo리스트를 조회하는게 잦으면 @OneToMany mapping해야함
-    //@OneToMany(mappedBy = "todo", cascade = CascadeType.REMOVE)
-    //private List<Todo> todoList;
-
 
     public User(String username, String password) {
         this.username = username;
