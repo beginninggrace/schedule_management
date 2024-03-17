@@ -1,5 +1,6 @@
 package com.sparta.schedule_management.todo.service;
 
+import com.sparta.schedule_management.exception.NotExistsPageException;
 import com.sparta.schedule_management.exception.NotExistsTodoException;
 import com.sparta.schedule_management.exception.NotExistsUserException;
 import com.sparta.schedule_management.exception.NotMatchedPasswordException;
@@ -14,8 +15,9 @@ import com.sparta.schedule_management.user.entity.User;
 import com.sparta.schedule_management.user.repository.UserRepository;
 import com.sparta.schedule_management.user.util.PasswordEncoderUtil;
 import java.util.List;
-import java.util.concurrent.RejectedExecutionException;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -59,22 +61,35 @@ public class TodoServiceImpl implements TodoService {
 
     @Override
     // 할일 전체 조회
-    public List<TodoListResponse> getTodos() {
-        List<TodoListResponse> responses = todoRepository.findAll(Sort.by("createdAt").descending())
+    public List<TodoListResponse> getTodos(int page, int size) {
+        if(page < 1){
+            throw new NotExistsPageException("페이지 번호는 1보다 작으면 안됩니다.");
+        }
+        Pageable pageable = PageRequest.of(page-1, size, Sort.by("createdAt").descending());
+        List<TodoListResponse> responses = todoRepository.findPagingAll(pageable)
             .stream().map(
                 (Todo todo) -> {
                     User user = userRepository.findById(todo.getUserId())
                         .orElseThrow(NotExistsUserException::new);
-                    return new TodoListResponse(user.getUsername(), todo.getTitle(),
-                        todo.getCreatedAt(), todo.getCompleted());
+                    return new TodoListResponse(
+                        user.getUsername(),
+                        todo.getTitle(),
+                        todo.getCreatedAt(),
+                        todo.getCompleted());
                 }).toList();
+        if (responses.isEmpty()) {
+            throw new NotExistsPageException("최대 페이지 수보다 큰 페이지 번호입니다.");
+        }
         return responses;
     }
 
     @Override
     // 할일 수정
     @Transactional
-    public TodoInfoResponse updateTodo(Long todoId, TodoUpdateRequest request, User user) {
+    public TodoInfoResponse updateTodo(
+        Long todoId,
+        TodoUpdateRequest request,
+        User user) {
         // 해당 게시글의 사용자인지 일치여부
         Todo todo = findTodoById(todoId);
         if (!todo.getUserId().equals(user.getId())) {
@@ -87,7 +102,10 @@ public class TodoServiceImpl implements TodoService {
         }
         todo.updateTodo(request.getTitle(),
             request.getContent());
-        return new TodoInfoResponse(user.getUsername(), todo.getTitle(), todo.getContent(),
+        return new TodoInfoResponse(
+            user.getUsername(),
+            todo.getTitle(),
+            todo.getContent(),
             todo.getCreatedAt());
 
     }
@@ -103,9 +121,31 @@ public class TodoServiceImpl implements TodoService {
             throw new NotMatchedUserException();
         }
         todo.completeTodo();
-        return new TodoListResponse(user1.getUsername(), todo.getTitle(),
-            todo.getCreatedAt(), todo.getCompleted());
+        return new TodoListResponse(
+            user1.getUsername(),
+            todo.getTitle(),
+            todo.getCreatedAt(),
+            todo.getCompleted());
     }
+
+    @Override
+    public List<TodoListResponse> searchKeyword(String q) {
+        List<TodoListResponse> responses = todoRepository.searchTodoKeyword(q)
+            .stream().map(
+                (Todo todo) -> {
+                    User user = userRepository.findById(todo.getUserId())
+                        .orElseThrow(NotExistsUserException::new);
+                    return new TodoListResponse(
+                        user.getUsername(),
+                        todo.getTitle(),
+                        todo.getCreatedAt(),
+                        todo.getCompleted());
+                }).toList();
+        return responses;
+
+    }
+
+
 
 
     private Todo findTodoById(Long todoId) {

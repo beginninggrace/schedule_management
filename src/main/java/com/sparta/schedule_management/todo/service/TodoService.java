@@ -17,7 +17,7 @@ public interface TodoService {
     TodoInfoResponse getTodo(Long todoId);
 
     // 할일 전체 조회
-    List<TodoListResponse> getTodos();
+    List<TodoListResponse> getTodos(int page, int size);
 
     // 할일 수정
     @Transactional
@@ -26,4 +26,6 @@ public interface TodoService {
     // 할일 완료
     @Transactional
     TodoListResponse completeTodo(Long todoId, User user);
+
+    List<TodoListResponse> searchKeyword(String q);
 }

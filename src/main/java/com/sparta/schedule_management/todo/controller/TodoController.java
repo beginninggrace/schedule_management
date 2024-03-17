@@ -4,7 +4,7 @@ import com.sparta.schedule_management.todo.dto.request.TodoRequest;
 import com.sparta.schedule_management.todo.dto.request.TodoUpdateRequest;
 import com.sparta.schedule_management.todo.dto.response.TodoInfoResponse;
 import com.sparta.schedule_management.todo.dto.response.TodoListResponse;
-import com.sparta.schedule_management.todo.service.TodoServiceImpl;
+import com.sparta.schedule_management.todo.service.TodoService;
 import com.sparta.schedule_management.user.security.UserDetailsImpl;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -23,27 +24,30 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/todos")
 public class TodoController {
 
-    private final TodoServiceImpl todoServiceImpl;
+    private final TodoService todoService;
 
     // 할일 작성(본인만 가능)
     @PostMapping
     public void createTodo(
         @RequestBody TodoRequest todoRequest,
         @AuthenticationPrincipal UserDetailsImpl userDetails) {
-        todoServiceImpl.createTodo(todoRequest, userDetails.getUser());
+        todoService.createTodo(todoRequest, userDetails.getUser());
     }
 
     @GetMapping("/{todoId}")
     public TodoInfoResponse getTodo(
         @PathVariable Long todoId) {
-        return todoServiceImpl.getTodo(todoId);
+        return todoService.getTodo(todoId);
 
     }
 
     // 할일 전체 조회(사용자 모두가 가능)
     @GetMapping
-    public List<TodoListResponse> getTodos() {
-        return todoServiceImpl.getTodos();
+    public List<TodoListResponse> getTodos(
+        @RequestParam(required = false, defaultValue = "0") int page,
+        @RequestParam(required = false, defaultValue = "10") int size
+    ) {
+        return todoService.getTodos(page, size);
     }
 
     // 할일 수정(본인만 가능)
@@ -52,7 +56,7 @@ public class TodoController {
         @PathVariable Long todoId,
         @RequestBody TodoUpdateRequest request,
         @AuthenticationPrincipal UserDetailsImpl userDetails) {
-        return todoServiceImpl.updateTodo(todoId, request, userDetails.getUser());
+        return todoService.updateTodo(todoId, request, userDetails.getUser());
     }
 
     // 할일 완료
@@ -60,7 +64,15 @@ public class TodoController {
     public TodoListResponse completeTodo(
         @PathVariable Long todoId,
         @AuthenticationPrincipal UserDetailsImpl userDetails) {
-        return todoServiceImpl.completeTodo(todoId, userDetails.getUser());
+        return todoService.completeTodo(todoId, userDetails.getUser());
     }
+
+    // 검색
+    @GetMapping("/search/keyword")
+    public List<TodoListResponse> searchKeyword(
+        @RequestParam String q) {
+        return todoService.searchKeyword(q);
+    }
+
 
 }

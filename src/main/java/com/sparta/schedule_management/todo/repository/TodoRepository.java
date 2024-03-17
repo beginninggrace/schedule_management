@@ -5,8 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.PagingAndSortingRepository;
 
 public interface TodoRepository extends JpaRepository<Todo, Long>,
-    PagingAndSortingRepository<Todo, Long> {
-
+    PagingAndSortingRepository<Todo, Long>, TodoQueryRepository {
 
 
 }
