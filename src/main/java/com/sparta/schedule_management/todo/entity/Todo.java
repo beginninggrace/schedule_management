@@ -35,6 +35,7 @@ public class Todo {
         this.title = title;
         this.content = content;
         this.userId = userId;
+        this.createdAt = LocalDateTime.now();
     }
 
     public void updateTodo(String title, String content) {
