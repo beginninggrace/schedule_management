@@ -45,7 +45,8 @@ public class TodoServiceImpl implements TodoService {
     @Override
     // 할일 단건 조회
     public TodoInfoResponse getTodo(Long todoId) {
-        Todo todo = findTodoById(todoId);
+        Todo todo = todoRepository.findById(todoId)
+            .orElseThrow(NotExistsTodoException::new);
         // username 필요함
         // user 필요
         // userid 필요

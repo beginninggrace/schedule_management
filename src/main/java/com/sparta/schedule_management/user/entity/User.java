@@ -2,6 +2,7 @@ package com.sparta.schedule_management.user.entity;
 
 import com.sparta.schedule_management.todo.entity.Todo;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -11,6 +12,7 @@ import java.util.List;
 @Getter
 @Entity
 @NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "users")
 public class User {
 

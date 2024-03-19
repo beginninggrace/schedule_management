@@ -1,5 +1,6 @@
 package com.sparta.schedule_management.todo.controller;
 
+import com.sparta.schedule_management.common.CommonResponse;
 import com.sparta.schedule_management.todo.dto.request.TodoRequest;
 import com.sparta.schedule_management.todo.dto.request.TodoUpdateRequest;
 import com.sparta.schedule_management.todo.dto.response.TodoInfoResponse;
@@ -35,9 +36,9 @@ public class TodoController {
     }
 
     @GetMapping("/{todoId}")
-    public TodoInfoResponse getTodo(
+    public CommonResponse<TodoInfoResponse> getTodo(
         @PathVariable Long todoId) {
-        return todoService.getTodo(todoId);
+        return CommonResponse.of(200, "단건 조회 성공", todoService.getTodo(todoId));
 
     }
 
