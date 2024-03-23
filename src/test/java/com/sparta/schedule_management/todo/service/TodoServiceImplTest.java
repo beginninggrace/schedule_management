@@ -86,7 +86,7 @@ class TodoServiceImplTest {
                 () -> todoService.getTodo(1L)).getMessage();
             //then
             Assertions.assertEquals("해당 투두가 존재하지 않습니다", message);
-//            Assertions.assertEquals(NotExistsTodoException.class"해당 투두가 존재하지 않습니다", message);
+//            Assertions.assertEquals(NotExistsTodoException.class"해당 투두가 존재하지 않습니다", message);//
         }
 
 
